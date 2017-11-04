@@ -1,5 +1,6 @@
 package com.mycomp.eshop;
 
+import com.mycomp.eshop.resource.Shopping;
 import io.dropwizard.Application;
 import io.dropwizard.Configuration;
 import io.dropwizard.setup.Bootstrap;
@@ -20,7 +21,7 @@ public class App extends Application<Configuration> {
     @Override
     public void run(Configuration conf, Environment env) throws Exception {
         LOG.info("Registering REST resources");
-
+        env.jersey().register(new Shopping());
     }
 
     public static void main(String[] args) throws Exception {

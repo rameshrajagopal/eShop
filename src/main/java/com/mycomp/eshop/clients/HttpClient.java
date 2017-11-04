@@ -9,6 +9,7 @@ import org.apache.http.impl.client.HttpClients;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URI;
 
 public class HttpClient {
     private static int HTTP_SUCCESS = 200;
@@ -20,7 +21,7 @@ public class HttpClient {
         httpClient = HttpClients.createDefault();
     }
 
-    public CloseableHttpResponse get(String uri) {
+    public CloseableHttpResponse get(URI uri) {
         HttpGet request = new HttpGet(uri);
         CloseableHttpResponse response = null;
         try {
