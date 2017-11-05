@@ -25,11 +25,23 @@ public class ApiRequest {
         this.appKey = appKey;
     }
 
-    public URI getRequest(String searchText, List<Integer> storeIds) {
+    public URI getUri(SearchRequest request) {
         URIBuilder builder = new URIBuilder();
+        //mandatory parameters
         builder.setScheme(scheme).setHost(host).setPath(endpoint)
-               .setParameter("app_id", appId).setParameter("app_key", appKey)
-               .setParameter("q", searchText);
+                .setParameter("app_id", appId).setParameter("app_key", appKey)
+                .setParameter("q", request.getSearchText());
+        // optional parameters
+        Integer lastRecordedIn = request.getLastRecordedIn();
+        if (lastRecordedIn != null) {
+            builder.setParameter("lastRecordedIn", lastRecordedIn.toString());
+        }
+        String availability = request.getAvailability();
+        if (availability != null) {
+            builder.setParameter("availability", availability);
+        }
+        // addStoreIds if any
+        List<Integer> storeIds = request.getStoreIds();
         if (storeIds != null) {
             for (Integer storeId : storeIds) {
                 builder.addParameter("storeId", storeId.toString());

@@ -23,9 +23,9 @@ public class ApiRequestTest extends TestCase {
 
     public void testGetRequest() {
         ApiRequest apiRequest = new ApiRequest("http", "scarlet.prod.platform.io", "/search", "indix.com", "abcd");
-        List<Integer> storeIds = null;
+        SearchRequest request = new SearchRequestBuilder().setSearchText("black").build();
         assertEquals("http://scarlet.prod.platform.io/search?app_id=indix.com&app_key=abcd&q=black",
-                apiRequest.getRequest("black", storeIds).toString());
+                apiRequest.getUri(request).toString());
     }
 
     public void testGetRequestWithStoreIds() {
@@ -34,7 +34,8 @@ public class ApiRequestTest extends TestCase {
         for (int idx = 0; idx < 3; ++idx) {
             storeIds.add(idx);
         }
+        SearchRequest request = new SearchRequestBuilder().setSearchText("black").setStoreIds(storeIds).build();
         assertEquals("http://scarlet.prod.platform.io/search?app_id=indix.com&app_key=abcd&q=black&storeId=0&storeId=1&storeId=2",
-                apiRequest.getRequest("black", storeIds).toString());
+                apiRequest.getUri(request).toString());
     }
 }
