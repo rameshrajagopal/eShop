@@ -1,21 +1,14 @@
 package com.mycomp.eshop.resource;
 
-import com.mycomp.eshop.clients.HttpClient;
 import com.mycomp.eshop.controller.ShoppingController;
-import com.mycomp.eshop.models.ApiRequest;
 import com.mycomp.eshop.models.SearchRequest;
 import com.mycomp.eshop.models.SearchRequestBuilder;
-import jdk.net.SocketFlow;
-import org.apache.http.client.methods.CloseableHttpResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.crypto.SealedObject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.net.URI;
-import java.util.List;
 
 @Path("/search")
 @Produces(MediaType.APPLICATION_JSON)
