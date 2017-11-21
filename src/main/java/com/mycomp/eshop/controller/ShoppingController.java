@@ -8,9 +8,7 @@ import com.mycomp.eshop.resource.Shopping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.ws.rs.core.Response;
 import java.net.URI;
-import java.util.List;
 
 public class ShoppingController {
     private static final Logger Log = LoggerFactory.getLogger(Shopping.class);
